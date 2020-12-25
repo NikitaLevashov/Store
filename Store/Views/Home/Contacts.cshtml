@@ -1,0 +1,112 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <style>
+        div {
+            margin: 10px;
+            border: 1px solid black;
+            font-size: 20px;
+            height: 80px;
+        }
+
+        #header {
+            background-color: #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            border-width: 3px;
+        }
+
+        #sidebar {
+            float: left;
+            width: 130px;
+            height: 290px;
+            border-width: 2px;
+            text-decoration: none;
+        }
+
+        #main {
+            height: 300px;
+            margin-left: 150px;
+            border-style: dotted;
+            border-width: 2px;
+            text-align: center;
+        }
+
+        #footer {
+            background-color: #ccc;
+            border-radius: 10px;
+            border-width: 4px;
+            height: 40px;
+            text-align: center;
+            background-color: #808080;
+            color: white;
+        }
+
+        #mainmenu {
+            overflow: hidden;
+            height: 40px;
+            margin: 10px 0
+        }
+
+        #mainmenu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            left: 50%;
+            float: left;
+            font: 14px Arial, Helvetica, sans-serif;
+            height: 40px
+        }
+
+        #mainmenu ul li {
+             position: relative;
+             left: -50%;
+             float: left;
+             margin: 0 10px;
+             height: 40px
+        }
+
+        #mainmenu ul li a {
+             color: #fff;
+             display: block;
+             text-decoration: none;
+             line-height: 40px;
+             border-style: none;
+        }
+
+        #mainmenu ul li a:hover {
+              background-color: #666;
+        }
+
+      </style>
+  </head>
+   <body>
+      <h1><pre>   Shop</pre></h1>
+    <div id="header">
+        <div id="mainmenu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Contacts</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="sidebar">
+
+        <p>Mobile phone</p>
+        <p>Notebook</p>
+        <p>Camera</p>
+        <p>Headphones</p>
+
+    </div>
+     <div id="main">Page content</div>
+     <div id="footer">Copyright 2020</div>
+  </body>
+</html>
