@@ -1,5 +1,6 @@
-﻿@{
-     Layout = null;
+﻿@using Microsoft.AspNetCore.Http;
+@{
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -17,10 +18,9 @@
 
         #header {
             background-color: #ddd;
-            padding: 10px; 
-            border-radius: 5px; 
+            padding: 10px;
+            border-radius: 5px;
             border-width: 3px;
- 
         }
 
         #sidebar {
@@ -50,54 +50,64 @@
         }
 
         #mainmenu {
-             overflow: hidden;
-             height: 40px;
-             margin: 10px 0
+            overflow: hidden;
+            height: 40px;
+            margin: 10px 0
         }
 
-        #mainmenu ul {
-           
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            position: relative;
-            left: 50%;
-            float: left;
-            font: 14px Arial, Helvetica, sans-serif;
-            height: 40px
-        }
+            #mainmenu ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                position: relative;
+                left: 50%;
+                float: left;
+                font: 14px Arial, Helvetica, sans-serif;
+                height: 40px
+            }
 
-        #mainmenu ul li {
-            position: relative;
-            left: -50%;
-            float: left;
-            margin: 0 10px;
-            height: 40px
-        }
+                #mainmenu ul li {
+                    position: relative;
+                    left: -50%;
+                    float: left;
+                    margin: 0 10px;
+                    height: 40px
+                }
 
-        #mainmenu ul li a {
-            color: #fff;
-            display: block;
-            text-decoration: none;
-            line-height: 40px;
-            border-style: none;
-        }
+                    #mainmenu ul li a {
+                        color: #fff;
+                        display: block;
+                        text-decoration: none;
+                        line-height: 40px;
+                        border-style: none;
+                    }
 
-        #mainmenu ul li a:hover {
-            background-color: #666;
-        }
-
+                        #mainmenu ul li a:hover {
+                            background-color: #666;
+                        }
     </style>
 </head>
 <body>
+    <form asp-action="Home" method="post">
+        <p>
+            <label for="text">Зарегестрироваться: </label>
+            <input type="text" placeholder="Введите имя" name="valueName" />
+        </p>
+        <p>
+            <button type="submit">Отправить</button>
+        </p>
+    </form>
+
+    <h2>@GetName()</h2>
     <h1><pre>   Shop</pre></h1>
     <div id="header">
         <div id="mainmenu">
+
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Contacts</a></li>
                 <li><a href="#">About</a></li>
-             </ul>
+            </ul>
         </div>
     </div>
     <div id="sidebar">
@@ -112,3 +122,29 @@
     <div id="footer">Copyright 2020</div>
 </body>
 </html>
+
+@functions
+{
+    public string GetName()
+    {
+        if (Context.Request.Cookies.ContainsKey("userName"))
+        {
+
+            string name = Context.Request.Cookies["userName"];
+            return $"Здравствуйте, {name}";
+
+        }
+
+        // при помощи Session
+        //if (Context.Request.Cookies.ContainsKey("userName"))
+        //{
+        //    string name = Context.Session.GetString("userName");
+        //    return  $"Здравствуйте, {name}";
+
+        //}
+
+        return "user";
+
+    }
+}
+

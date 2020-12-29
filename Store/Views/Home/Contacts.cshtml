@@ -54,43 +54,44 @@
             margin: 10px 0
         }
 
-        #mainmenu ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            position: relative;
-            left: 50%;
-            float: left;
-            font: 14px Arial, Helvetica, sans-serif;
-            height: 40px
-        }
+            #mainmenu ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                position: relative;
+                left: 50%;
+                float: left;
+                font: 14px Arial, Helvetica, sans-serif;
+                height: 40px
+            }
 
-        #mainmenu ul li {
-             position: relative;
-             left: -50%;
-             float: left;
-             margin: 0 10px;
-             height: 40px
-        }
+                #mainmenu ul li {
+                    position: relative;
+                    left: -50%;
+                    float: left;
+                    margin: 0 10px;
+                    height: 40px
+                }
 
-        #mainmenu ul li a {
-             color: #fff;
-             display: block;
-             text-decoration: none;
-             line-height: 40px;
-             border-style: none;
-        }
+                    #mainmenu ul li a {
+                        color: #fff;
+                        display: block;
+                        text-decoration: none;
+                        line-height: 40px;
+                        border-style: none;
+                    }
 
-        #mainmenu ul li a:hover {
-              background-color: #666;
-        }
-
-      </style>
-  </head>
-   <body>
-      <h1><pre>   Shop</pre></h1>
+                        #mainmenu ul li a:hover {
+                            background-color: #666;
+                        }
+    </style>
+</head>
+<body>
+    <h1><pre>   Shop</pre></h1>
+    <h3>@GetName()</h3>
     <div id="header">
         <div id="mainmenu">
+
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Contacts</a></li>
@@ -106,7 +107,31 @@
         <p>Headphones</p>
 
     </div>
-     <div id="main">Page content</div>
-     <div id="footer">Copyright 2020</div>
-  </body>
+    <div id="main">Page content</div>
+    <div id="footer">Copyright 2020</div>
+</body>
 </html>
+
+@functions
+{
+    public string GetName()
+    {
+        if (Context.Request.Cookies.ContainsKey("userName"))
+        {
+            string name = Context.Request.Cookies["userName"];
+            return $"Здравствуйте, {name}";
+
+        }
+
+          // при помощи Session
+        //if (Context.Request.Cookies.ContainsKey("userName"))
+        //{
+        //    string name = Context.Session.GetString("userName");
+        //    return  $"Здравствуйте, {name}";
+
+        //}
+
+        return "user";
+    }
+}
+
