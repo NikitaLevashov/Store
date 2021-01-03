@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System;
 using System.Web;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Store.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 
 namespace Store.Controllers
 {
@@ -16,15 +16,19 @@ namespace Store.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public IConfiguration Configuration { get; }
+    
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
         {
             _logger = logger;
+            Configuration = configuration;
         }
 
         public IActionResult Index()
         {
             return View();
         }
+
         [HttpGet]
         public IActionResult Home()
         {
@@ -45,7 +49,7 @@ namespace Store.Controllers
                 //при помощи Session
                 //HttpContext.Session.SetString(_userKey, valueName);
 
-                return View();
+                return Redirect("Home");
             }
             else
             {
@@ -56,12 +60,12 @@ namespace Store.Controllers
 
         public IActionResult Contacts()
         {
-           return View();
+           return View("About");
         }
 
         public IActionResult About()
         {
-            return View();
+            return View("About");
         }
         public IActionResult Privacy()
         {
