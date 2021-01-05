@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Data.SqlClient;
 using System.Web;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,25 +10,29 @@ using Microsoft.Extensions.Logging;
 using Store.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using System.Data;
+using Store.Repository;
 
 namespace Store.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IRepository _repository; 
 
         public IConfiguration Configuration { get; }
     
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
+        public HomeController(IRepository repository, IConfiguration configuration)
         {
-            _logger = logger;
+            _repository = repository ?? throw new ArgumentNullException();
             Configuration = configuration;
         }
 
-        public IActionResult Index()
+        public IActionResult GetCatalogWithProduct(string catalog)
         {
-            return View();
+            IEnumerable<Products> products = _repository.GetProducts(catalog);
+            return View(products);
         }
+      
 
         [HttpGet]
         public IActionResult Home()
@@ -53,16 +58,16 @@ namespace Store.Controllers
             }
             else
             {
-                return View("Перезагрузите страницу и введите имя.");
+                return View();
             }
 
         }
 
         public IActionResult Contacts()
         {
-           return View("About");
+           return View("Contacts");
         }
-
+            
         public IActionResult About()
         {
             return View("About");

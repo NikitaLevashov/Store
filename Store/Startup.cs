@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Store.Repository;
 
 namespace Store
 {
@@ -25,6 +26,7 @@ namespace Store
         {
             services.AddControllersWithViews();
             services.AddDistributedMemoryCache();
+            services.AddSingleton<IRepository, AdoRepository>();
             services.AddSession(options =>
             {
                 options.Cookie.Name = ".Store.Session";
@@ -57,7 +59,7 @@ namespace Store
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=GetCatalogWithProduct}/{catalog=Mobile phone}");
             });
         }
     }
