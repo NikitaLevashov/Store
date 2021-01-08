@@ -26,7 +26,7 @@ namespace Store
         {
             services.AddControllersWithViews();
             services.AddDistributedMemoryCache();
-            services.AddSingleton<IRepository, AdoRepository>();
+            services.AddSingleton<IRepository, RepositoryByAdoNet>();
             services.AddSession(options =>
             {
                 options.Cookie.Name = ".Store.Session";
@@ -55,11 +55,12 @@ namespace Store
 
             app.UseAuthorization();
             app.UseSession();
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=GetCatalogWithProduct}/{catalog=Mobile phone}");
+                    pattern: "{controller=Home}/{action=GetCatalogMobileProductStart}/{id?}");
             });
         }
     }

@@ -18,13 +18,9 @@ namespace Store.Controllers
     public class HomeController : Controller
     {
         private readonly IRepository _repository; 
-
-        public IConfiguration Configuration { get; }
-    
-        public HomeController(IRepository repository, IConfiguration configuration)
+        public HomeController(IRepository repository)
         {
             _repository = repository ?? throw new ArgumentNullException();
-            Configuration = configuration;
         }
 
         public IActionResult GetCatalogWithProduct(string catalog)
@@ -32,7 +28,12 @@ namespace Store.Controllers
             IEnumerable<Products> products = _repository.GetProducts(catalog);
             return View(products);
         }
-      
+
+        public IActionResult GetCatalogMobileProductStart()
+        {
+            IEnumerable<Products> products = _repository.GetProducts("Mobile phone");
+            return View(products);
+        }
 
         [HttpGet]
         public IActionResult Home()

@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace Store.Repository
 {
-    public class AdoRepository : IRepository
+    public class RepositoryByAdoNet : IRepository
     {
-        public IConfiguration Configuration { get; }
         public IEnumerable<Products> GetProducts(string catalog)
         {
             List<Products> products = new List<Products>();
@@ -32,7 +31,6 @@ namespace Store.Repository
                         });
 
                     }
-                    sqlConnection.Close();
                 }
             }
             return products;
