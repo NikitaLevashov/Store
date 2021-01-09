@@ -26,7 +26,7 @@ namespace Store
         {
             services.AddControllersWithViews();
             services.AddDistributedMemoryCache();
-            services.AddSingleton<IRepository, RepositoryByAdoNet>();
+            services.AddSingleton<IRepository, RepositoryByLinqToSql>();
             services.AddSession(options =>
             {
                 options.Cookie.Name = ".Store.Session";

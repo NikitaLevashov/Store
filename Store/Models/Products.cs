@@ -8,6 +8,7 @@ using System.Data.Linq.Mapping;
 
 namespace Store.Models
 {
+    [Table(Name = "Products")]
     public class Products
     {
         [Column(IsPrimaryKey = true, IsDbGenerated = true)]
@@ -15,7 +16,7 @@ namespace Store.Models
 
         [Column(Name = "product_name")]
         public string Name { get; set; }
-        public virtual ICollection<Catalog> Catalogs { get; set; } = new List<Catalog>();
+        //public virtual ICollection<Catalog> Catalogs { get; set; } = new List<Catalog>();
        
     }
 }

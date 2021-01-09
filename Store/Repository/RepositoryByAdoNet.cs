@@ -29,7 +29,6 @@ namespace Store.Repository
                         {
                             Name = sqlDataReader["product_name"].ToString()
                         });
-
                     }
                 }
             }

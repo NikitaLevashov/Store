@@ -22,7 +22,7 @@ namespace Store.Models
         {
             modelBuilder.Entity<Catalog>()
                     .HasMany(c => c.Product)
-                    .WithMany(s => s.Catalogs)
+                    .WithMany(s => s.Id)
                     .UsingEntity(j => j.ToTable("CatalogProducts"));
         }
     }
