@@ -31,7 +31,7 @@ namespace Store.Controllers
 
         public IActionResult GetCatalogMobileProductStart()
         {
-            IEnumerable<Products> products = _repository.GetProducts("Mobile phone");
+            IEnumerable<Products> products = _repository.GetProducts("Mobile phone"); // страница по умолчанию согласно заданию
             return View(products);
         }
 

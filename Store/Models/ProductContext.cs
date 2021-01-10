@@ -8,22 +8,22 @@ using System.Data.Entity;
 
 namespace Store.Models
 {
-    public class ProductContext : DbContext
-    {
-        public DbSet<Products> Products { get; set; }
-        public DbSet<Catalog> Catalog { get; set; }
+    //public class ProductContext : DbContext
+    //{
+    //    public DbSet<Products> Products { get; set; }
+    //    public DbSet<Catalog> Catalog { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Shopdb;Trusted_Connection=True");
-        }
+    //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //    {
+    //        optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=Shopdb;Trusted_Connection=True");
+    //    }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Catalog>()
-                    .HasMany(c => c.Product)
-                    .WithMany(s => s.Id)
-                    .UsingEntity(j => j.ToTable("CatalogProducts"));
-        }
-    }
+    //    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    //    {
+    //        modelBuilder.Entity<Catalog>()
+    //                .HasMany(c => c.Product)
+    //                .WithMany(s => s.Id)
+    //                .UsingEntity(j => j.ToTable("CatalogProducts"));
+    //    }
+    //}
 }
