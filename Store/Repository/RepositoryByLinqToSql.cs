@@ -25,7 +25,7 @@ namespace Store.Repository
                         join prod in products on catalogProduct.ProductId equals prod.Id
                         select prod;
             
-            return query; 
+            return query ; 
         }
     }
 }

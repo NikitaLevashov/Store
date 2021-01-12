@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Data.Linq.Mapping;
 
-
 namespace Store.Models
 {
     [Table(Name = "Catalog")]
@@ -15,6 +14,6 @@ namespace Store.Models
 
         [Column(Name = "catalog_name")]
         public string Name { get; set; }
-        public ICollection<Products> Product { get; set; } = new List<Products>();
+        public ICollection<CatalogProducts> CatalogProduct { get; set; } = new List<CatalogProducts>();
     }
 }
